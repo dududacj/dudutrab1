@@ -1,0 +1,12 @@
+email= 'teste@gmail.com'
+senha= 'eu12345'
+
+email2= input ('Informe seu email:')
+senha2= input ('Informe sua senha:')
+
+if  email2 == email and  senha2 == senha:
+     pass
+else:
+     print('tente novamente')
+     input('informe seu email:')
+     input('informe sua senha:')
