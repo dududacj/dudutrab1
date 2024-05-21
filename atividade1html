@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu currículo    </title>
+</head>
+<body>
+    <H1>Cursos</H1>
+    <p>No momento apenas cursando na escola Infinity School./></p>
+    <p><a href="https://infinityschool.com.br/a-escola/">site da escola</a></p>
+    <h2>Modulos Concluidos</h2>
+    <p>Logica da Programação e Python.</p>
+    <h2>Escola onde Estuda</h2>
+    <p>Estudo atualmente no Rede decisão, no segundo ano. </p>
+
+</body>
+</html>
