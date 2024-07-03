@@ -1,0 +1,68 @@
+alunos = {}
+
+def AdicionarAluno():
+    numero_matricula = input("Digite o número de matrícula do aluno: ")
+    nome_aluno = input("Digite o nome do aluno: ")
+    
+    if numero_matricula in alunos:
+        print("Número de matrícula já existe. Aluno não adicionado.")
+    else:
+        alunos[numero_matricula] = nome_aluno
+        print(f"Aluno {nome_aluno} adicionado com sucesso!")
+
+def RemoverAluno():
+    numero_matricula = input("Digite o número de matrícula do aluno que deseja remover: ")
+    
+    if numero_matricula in alunos:
+        del alunos[numero_matricula]
+        print(f"Aluno de matrícula {numero_matricula} removido com sucesso!")
+    else:
+        print("Número de matrícula não encontrado.")
+
+def AtualizarAluno():
+    numero_matricula = input("Digite o número de matrícula do aluno que deseja atualizar: ")
+    
+    if numero_matricula in alunos:
+        novo_nome = input("Digite o novo nome do aluno: ")
+        alunos[numero_matricula] = novo_nome
+        print(f"Aluno de matrícula {numero_matricula} atualizado com sucesso!")
+    else:
+        print("Número de matrícula não encontrado.")
+
+def VerAlunos():
+    if alunos:
+        print("Lista de alunos:")
+        for numero_matricula, nome_aluno in alunos.items():
+            print(f"Matrícula: {numero_matricula}, Nome: {nome_aluno}")
+    else:
+        print("Nenhum aluno cadastrado.")
+
+def menu():
+    while True:
+        print("Menu:")
+        print("1. Adicionar Aluno")
+        print("2. Remover Aluno")
+        print("3. Atualizar Aluno")
+        print("4. Ver Alunos")
+        print("5. Sair")
+        escolha = input("Escolha uma opção: ")
+
+        if escolha == "1":
+            AdicionarAluno()
+        elif escolha == "2":
+            RemoverAluno()
+        elif escolha == "3":
+            AtualizarAluno()
+        elif escolha == "4":
+            VerAlunos()
+        elif escolha == "5":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+
+if __name__ == "__main__":
+    menu()
+
+
