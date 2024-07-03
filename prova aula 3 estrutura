@@ -1,0 +1,22 @@
+def main():
+    numeros = []
+    controle= True    
+    while controle== True:
+        
+            num = int(input("Digite um número inteiro (0 para sair): "))
+            if num == 0:
+                break
+            numeros.append(num)
+    else:
+            print("Por favor, digite um número inteiro válido.")
+    
+    quantidade = len(numeros)
+    soma = sum(numeros)
+    media = soma / quantidade if quantidade > 0 else 0
+
+    print(f"Quantidade de números digitados: {quantidade}")
+    print(f"Soma dos números digitados: {soma}")
+    print(f"Média aritmética: {media:.2f}")
+
+if __name__ == "__main__":
+    main()
