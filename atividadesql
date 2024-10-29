@@ -1,0 +1,25 @@
+import tkinter as tk
+from tkinter import messagebox
+
+def converter():
+
+        cm = float(entry_cm.get())
+        metros = cm / 100
+        label_resultado.config(text=f"{cm} cm é igual a {metros:.2f} m")
+root = tk.Tk()
+root.title("Conversor de Centímetros para Metros")
+
+label_cm = tk.Label(root, text="Digite a medida em centímetros:")
+label_cm.pack()
+
+entry_cm = tk.Entry(root)
+entry_cm.pack()
+
+botao_converter = tk.Button(root, text="Converter", command=converter)
+botao_converter.pack()
+
+label_resultado = tk.Label(root, text="")
+label_resultado.pack()
+
+
+root.mainloop()
