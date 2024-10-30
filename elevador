@@ -1,0 +1,45 @@
+class Elevador:
+    def __init__(self, total_capacidade, total_andar):
+        self.total_capacidade = total_capacidade  
+        self.atual_capacidade = 0  
+        self.total_andar = total_andar  
+        self.atual_andar = 0  
+
+    def subir(self):
+        if self.atual_andar < self.total_andar - 1:
+            self.atual_andar += 1
+            print("Subindo")
+        else:
+            print("VOCÊ ESTÁ NO ANDAR MAIS ALTO!")
+
+    def descer(self):
+        if self.atual_andar > 0:
+            self.atual_andar -= 1
+            print("Descendo")
+        else:
+            print("VOCÊ JÁ ESTÁ NO TÉRREO!")
+
+    def entrar(self):
+        if self.atual_capacidade < self.total_capacidade:
+            self.atual_capacidade += 1
+            print("Entrando uma pessoa")
+        else:
+            print("O ELEVADOR ESTÁ CHEIO!")
+
+    def sair(self):
+        if self.atual_capacidade > 0:
+            self.atual_capacidade -= 1
+            print("Saindo uma pessoa")
+        else:
+            print("NÃO TEM NINGUÉM")
+
+
+
+    elevador.entrar() 
+    elevador.entrar()  
+    elevador.sair()   
+    elevador.subir()  
+    elevador.subir()   
+    elevador.descer() 
+    elevador.descer()  
+    elevador.subir()   
