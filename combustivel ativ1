@@ -1,0 +1,51 @@
+class BombaCombustivel:
+    def __init__(self, tipo_combustivel, valor_litro, quantidade_combustivel):
+        self.tipo_combustivel = tipo_combustivel
+        self.valor_litro = valor_litro
+        self.quantidade_combustivel = quantidade_combustivel
+
+    def abastecer_por_valor(self, valor):
+        if valor <= 0:
+            return "O valor deve ser maior que zero."
+        litros_abastecidos = valor / self.valor_litro
+        if litros_abastecidos > self.quantidade_combustivel:
+            return f"Quantidade nao suficiente de combustível. Apenas {self.quantidade_combustivel} litros disponíveis."
+        
+        self.quantidade_combustivel -= litros_abastecidos
+        return f"Abastecido: {litros_abastecidos:.2f} litros. Combustível restante {self.quantidade_combustivel:.2f} litros."
+
+    def abastecer_por_litro(self, litros):
+        if litros <= 0:
+            return "A quantidade de litros deve ser maior que zero."
+        if litros > self.quantidade_combustivel:
+            return f"Quantidade nao suficiente de combustível. Apenas {self.quantidade_combustivel} litros disponíveis."
+        
+        valor_a_pagar = litros * self.valor_litro
+        self.quantidade_combustivel -= litros
+        return f"Valor a pagar: R$ {valor_a_pagar:.2f}. Combustível restante: {self.quantidade_combustivel:.2f} litros."
+
+    def alterar_valor(self, novo_valor):
+        if novo_valor <= 0:
+            return "O novo valor deve ser maior que zero."
+        self.valor_litro = novo_valor
+        return f"Valor do litro alterado para: R$ {self.valor_litro:.2f}."
+
+    def alterar_combustivel(self, novo_tipo):
+        self.tipo_combustivel = novo_tipo
+        return f"Tipo de combustível alterado para: {self.tipo_combustivel}."
+
+    def alterar_quantidade_combustivel(self, nova_quantidade):
+        if nova_quantidade < 0:
+            return "A quantidade não pode ser menor que zero."
+        self.quantidade_combustivel = nova_quantidade
+        return f"Quantidade de combustível alterada para: {self.quantidade_combustivel:.2f} litros."
+
+
+if __name__ == "__main__":
+    bomba = BombaCombustivel("Gasolina", 5.50, 100.0)
+
+    print(bomba.abastecer_por_valor(50)) 
+    print(bomba.abastecer_por_litro(10)) 
+    print(bomba.alterar_valor(5.50))      
+    print(bomba.alterar_combustivel("Álcool"))  
+    print(bomba.alterar_quantidade_combustivel(120))
