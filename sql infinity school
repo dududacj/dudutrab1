@@ -1,0 +1,7 @@
+CREATE DATABASE Infinity_School;
+
+
+USE Infinity_School;
+
+
+SELECT ' Infinity_School!' AS mensagem;
