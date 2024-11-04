@@ -1,0 +1,115 @@
+import sqlite3
+from datetime import datetime
+
+class Produto:
+    def __init__(self, id, nome, descricao, quantidade, preco):
+        self.id = id
+        self.nome = nome
+        self.descricao = descricao
+        self.quantidade = quantidade
+        self.preco = preco
+
+class Venda:
+    def __init__(self, id, produto_id, quantidade, data_venda):
+        self.id = id
+        self.produto_id = produto_id
+        self.quantidade = quantidade
+        self.data_venda = data_venda
+
+class GerenciadorEstoque:
+    def __init__(self, db_name):
+        self.connection = sqlite3.connect(meu_estoque.db)
+        self.create_tables()
+
+    def create_tables(self):
+        with self.connection:
+            self.connection.execute('''
+                CREATE TABLE IF NOT EXISTS Produtos (
+                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Nome TEXT NOT NULL,
+                    Descricao TEXT,
+                    Quantidade INTEGER NOT NULL,
+                    Preco REAL NOT NULL
+                );
+            ''')
+            self.connection.execute('''
+                CREATE TABLE IF NOT EXISTS Vendas (
+                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ProdutoID INTEGER NOT NULL,
+                    Quantidade INTEGER NOT NULL,
+                    DataVenda TEXT NOT NULL,
+                    FOREIGN KEY (ProdutoID) REFERENCES Produtos (ID)
+                );
+            ''')
+
+    def adicionar_produto(self, nome, descricao, quantidade, preco):
+        with self.connection:
+            self.connection.execute('''
+                INSERT INTO Produtos (Nome, Descricao, Quantidade, Preco) 
+                VALUES (?, ?, ?, ?);
+            ''', (nome, descricao, quantidade, preco))
+
+    def atualizar_produto(self, produto_id, quantidade):
+        with self.connection:
+            self.connection.execute('''
+                UPDATE Produtos SET Quantidade = ? WHERE ID = ?;
+            ''', (quantidade, produto_id))
+
+    def visualizar_produtos(self):
+        cursor = self.connection.cursor()
+        cursor.execute('SELECT * FROM Produtos;')
+        return cursor.fetchall()
+
+    def registrar_venda(self, produto_id, quantidade):
+        cursor = self.connection.cursor()
+        cursor.execute('SELECT Quantidade FROM Produtos WHERE ID = ?;', (produto_id,))
+        produto = cursor.fetchone()
+
+        if produto and produto[0] >= quantidade:
+            nova_quantidade = produto[0] - quantidade
+            with self.connection:
+                self.connection.execute('''
+                    INSERT INTO Vendas (ProdutoID, Quantidade, DataVenda) 
+                    VALUES (?, ?, ?);
+                ''', (produto_id, quantidade, datetime.now().isoformat()))
+                self.atualizar_produto(produto_id, nova_quantidade)
+            return True
+        else:
+            return False
+
+    def gerar_relatorio(self):
+        cursor = self.connection.cursor()
+        cursor.execute('SELECT * FROM Produtos;')
+        produtos = cursor.fetchall()
+
+        relatorio = "Relatório de Estoque:"
+        for produto in produtos:
+            relatorio += f"ID: {produto[0]}, Nome: {produto[1]}, Quantidade: {produto[3]}, Preço: R$ {produto[4]:.2f}"
+        return relatorio
+
+    def close(self):
+        self.connection.close()
+
+if __name__ == "__main__":
+    gerenciador = GerenciadorEstoque("meu_estoque.db")
+
+  
+    gerenciador.adicionar_produto("Produto A", "Descrição do Produto A", 100, 10.50)
+    gerenciador.adicionar_produto("Produto B", "Descrição do Produto B", 50, 20.00)
+    gerenciador.adicionar_produto("Produto C", "Descrição do Produto C", 200, 5.00)
+
+    print("Produtos no Estoque:")
+    for produto in gerenciador.visualizar_produtos():
+        print(produto)
+
+    
+    perfeito = gerenciador.registrar_venda(1, 5) 
+    if perfeito:
+        print("Venda registrada com sucesso.")
+    else:
+        print("Quantidade insuficiente.")
+
+    
+    print(gerenciador.gerar_relatorio())
+
+    gerenciador.close()
