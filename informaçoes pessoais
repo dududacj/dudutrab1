@@ -1,0 +1,33 @@
+CREATE DATABASE Informacoes_Pessoais;
+
+-
+USE Informacoes_Pessoais;
+
+
+CREATE TABLE Pessoas (
+    ID INT PRIMARY KEY,
+    Nome_Completo VARCHAR(200),
+    Idade INT,
+    Genero VARCHAR(100),
+    Nacionalidade VARCHAR(100),
+    Email VARCHAR(150),
+    Estado_Civil VARCHAR(100),
+    Nome_Pai VARCHAR(200),
+    Nome_Mae VARCHAR(200)
+);
+
+INSERT INTO Pessoas (ID, Nome_Completo, Idade, Genero, Nacionalidade, Email, Estado_Civil, Nome_Pai, Nome_Mae)
+VALUES 
+(1, 'Joao Silva', 21, 'Masculino', 'Brasileiro', 'joaosilva.infinity@teste.com', 'Casado', 'Carlos Silva', 'Maria Silva'),
+(2, 'Pedro Costa', 22, 'Masculino', 'Brasileiro', 'brunocosta.infinity@teste.com', 'Casado', 'Roberto Costa', 'Ana Costa'),
+(3, 'sofia Pereira', 20, 'Feminino', 'Brasileira', 'sofiapereira.infinity@teste.com', 'Solteira', 'João Pereira', 'Fernanda Pereira');
+
+UPDATE Pessoas
+SET Idade = 29, Email = 'joaonovo@email.com', Estado_Civil = 'Namorando'
+WHERE ID = 1;
+
+
+DELETE FROM Pessoas
+WHERE ID = 2;
+
+SELECT * FROM Pessoas;
