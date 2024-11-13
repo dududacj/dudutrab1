@@ -1,0 +1,27 @@
+let numEstudantes = parseInt(prompt("Digite o número total de estudantes:"));
+
+
+let somaNotas = 0;
+let maiorNota = 0;  
+let menorNota = 10; 
+
+
+for (let i = 1; i <= numEstudantes; i++) {
+    let nota = parseFloat(prompt(`Digite a nota do ${i}º aluno:`));
+  
+    somaNotas += nota;
+    
+   
+    if (nota > maiorNota) {
+        maiorNota = nota;
+    }
+    if (nota < menorNota) {
+        menorNota = nota;
+    }
+}
+
+
+let media = somaNotas / numEstudantes;
+
+
+alert(`\nResultados:\nMédia da turma: ${media}\nMaior nota: ${maiorNota} \nMenor nota: ${menorNota}`);
