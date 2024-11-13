@@ -1,0 +1,42 @@
+function calcularFatorial(n) {
+    if (n === 0 || n === 1) {
+        return 1; 
+    }
+    let fatorial = 1;
+    for (let i = 2; i <= n; i++) {
+        fatorial *= i;  
+    }
+    return fatorial;
+}
+function gerarFibonacci(n) {
+    let fibonacci = [0, 1]; 
+
+    for (let i = 2; i <= n; i++) {
+        let proximoNumero = fibonacci[i - 1] + fibonacci[i - 2]; 
+        fibonacci.push(proximoNumero);  
+    }
+    
+    return fibonacci.slice(0, n + 1);
+}
+
+
+function processarEntrada() {
+    
+    let numero = parseInt(prompt("Digite um número inteiro positivo:"));
+    
+    
+    if (isNaN(numero) || numero < 0) {
+        alert(" insira um número inteiro positivo, animal!");
+        return;
+    }
+
+    
+    let fatorial = calcularFatorial(numero);
+    let fibonacci = gerarFibonacci(numero);
+
+   
+    alert(`Fatorial de ${numero}: ${fatorial}`);
+    alert(`Sequência de Fibonacci até ${numero}: ${fibonacci.join(', ')}`);
+}
+
+processarEntrada();
