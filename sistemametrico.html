@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Distâncias</title>
+    <script src="script.js"></script> 
+</head>
+<body>
+    <h1>Conversor de Distâncias</h1>
+    <label for="metros">Distância (em metros): </label>
+    <input type="number" id="metros" placeholder="Digite a distância em metros" required>
+    <br><br>
+    <label for="unidade">Converter para: </label>
+    <select id="unidade">
+        <option value="jarda">Jarda</option>
+        <option value="pe">Pé</option>
+        <option value="polegada">Polegada</option>
+        <option value="milha">Milha</option>
+    </select>
+    <br><br>
+    <button onclick="converter()">Converter</button>
+    <h2 id="resultado">Resultado: </h2>
+
+</body>
+</html>
