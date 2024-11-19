@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Streaming</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Plataforma de Streaming</h1>
+        <input type="text" id="search-input" placeholder="Buscar filme ou série...">
+        <button onclick="buscar()">Buscar</button>
+    </header>
+
+    <main>
+        <section id="catalogo">
+            <h2>Catálogo de Filmes e Séries</h2>
+            <div id="lista-filmes" class="lista">
+               
+            </div>
+        </section>
+
+        <section id="detalhes" style="display:none;">
+            <h2>Detalhes</h2>
+            <div id="detalhes-conteudo">
+            
+            </div>
+            <button onclick="voltarCatalogo()">Voltar ao catálogo</button>
+        </section>
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
