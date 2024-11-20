@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho de Compras</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>carrinho de compras</h1>
+    <nav>
+      <a href="javascript:void(0);" onclick="showCatalog()">Catálogo</a>
+      <a href="javascript:void(0);" onclick="showCart()">Carrinho</a>
+    </nav>
+  </header>
+
+  <div class="container" id="catalog-container">
+
+  </div>
+
+  <div class="container" id="cart-container" style="display: none;">
+    <div class="cart-summary">
+      <h3>Carrinho de Compras</h3>
+      <div id="cart-items">
+     
+      </div>
+      <div id="total-price">
+    
+      </div>
+      <button onclick="checkout()">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Loja Online</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
